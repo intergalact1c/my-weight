@@ -59,11 +59,12 @@ function Profile() {
         ) : (
           <div className="profile__item">
             Тек. вес:<span className="profile__item-val">{startingWeight}</span>
+            {parse(weightLossDynamics(0))}
           </div>
         )}
         <div className="profile__item">
           Цель:<span className="profile__item-val">{targetWeight}</span>
-          {weighting.length ? parse(weightLossDynamics(targetWeight - weighting[0].weight)) : null}
+          {weighting.length ? parse(weightLossDynamics(weighting[0].weight - targetWeight)) : parse(weightLossDynamics(startingWeight - targetWeight))}
         </div>
       </div>
       <Button
